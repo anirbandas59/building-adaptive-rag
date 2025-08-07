@@ -1,0 +1,75 @@
+[project]
+name = "building-adaptive-rag"
+version = "0.1.0"
+description = "An advanced Retrieval-Augmented Generation (RAG) system built with LangChain and LangGraph that dynamically routes queries between local knowledge base and web search."
+authors = [
+    {name = "Anirban Das", email = "anirbandas59@outlook.com"},
+]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.12"
+keywords = ["rag", "langchain", "langgraph", "llm", "ai", "chatbot", "retrieval"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "langchain>=0.3.27",
+    "langchain-anthropic>=0.3.18",
+    "langchain-aws>=0.2.29",
+    "langchain-chroma>=0.2.5",
+    "langchain-community>=0.3.27",
+    "langchain-openai>=0.3.28",
+    "langchain-tavily>=0.2.11",
+    "langchainhub>=0.1.21",
+    "langgraph>=0.6.2",
+    "python-dotenv>=1.1.1",
+    "tavily-python>=0.7.10",
+    "tiktoken>=0.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.1",
+    "ruff>=0.12.7",
+    "isort>=6.0.1",
+]
+
+[project.scripts]
+rag-chat = "main:main"
+rag-ingest = "ingestion:main"
+
+[project.urls]
+Repository = "https://github.com/anirbandas59/building-adaptive-rag"
+Issues = "https://github.com/anirbandas59/building-adaptive-rag/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "C90", "I", "N", "UP", "B", "A", "C4", "ICN", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "TCH", "ARG", "PTH", "ERA", "PGH", "PL", "TRY", "NPY", "RUF"]
+ignore = ["E501", "B008", "TRY003"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["ARG", "S101"]
+
+[tool.pytest.ini_options]
+testpaths = ["graph/chains/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.isort]
+profile = "black"
+line_length = 88

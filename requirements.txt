@@ -1,0 +1,16 @@
+beautifulsoup4
+langchain-community
+tiktoken
+langchain
+langchainhub
+langgraph
+tavily-python
+langchain-openai
+python-dotenv
+ruff
+isort
+pytest
+langchain-chroma
+langchain-tavily
+langchain_aws
+langchain-anthropic
